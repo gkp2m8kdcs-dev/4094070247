@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JPMAPCB</title>
+<meta name="description" content="JPMAPCB — a private investment portfolio companion for iPhone. Track positions, log activity, simulate scenarios, and reflect on your decisions." />
+<style>
+    :root {
+        --bg: #0b0d12;
+        --surface: #14171f;
+        --surface-2: #1b1f29;
+        --text: #e8ecf3;
+        --text-dim: #9aa3b2;
+        --accent: #4f8cff;
+        --accent-2: #6dd3a4;
+        --border: #232836;
+        --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+
+    header {
+        padding: 32px 0 16px;
+        border-bottom: 1px solid var(--border);
+        background: var(--bg);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+    }
+    .brand {
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: 0.3px;
+    }
+    .brand span { color: var(--accent); }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 18px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+    }
+    nav ul li a {
+        color: var(--text-dim);
+        font-size: 14px;
+    }
+    nav ul li a:hover { color: var(--text); text-decoration: none; }
+
+    .hero {
+        padding: 56px 0 24px;
+    }
+    .hero h1 {
+        font-size: 38px;
+        line-height: 1.15;
+        margin: 0 0 14px;
+        letter-spacing: -0.5px;
+    }
+    .hero p.lead {
+        font-size: 18px;
+        color: var(--text-dim);
+        margin: 0 0 24px;
+        max-width: 720px;
+    }
+    .badge {
+        display: inline-block;
+        background: var(--surface-2);
+        color: var(--accent);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 18px;
+        border: 1px solid var(--border);
+    }
+    .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+    }
+    .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 15px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .btn-primary {
+        background: var(--accent);
+        color: #fff;
+    }
+    .btn-primary:hover { filter: brightness(1.08); text-decoration: none; }
+    .btn-secondary {
+        background: var(--surface-2);
+        color: var(--text);
+        border-color: var(--border);
+    }
+    .btn-secondary:hover { background: #232836; text-decoration: none; }
+
+    section {
+        padding: 40px 0;
+        border-top: 1px solid var(--border);
+    }
+    section h2 {
+        font-size: 24px;
+        margin: 0 0 18px;
+        letter-spacing: -0.2px;
+    }
+    section p {
+        color: var(--text-dim);
+        margin: 0 0 14px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+    }
+    .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 18px;
+    }
+    .card h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        color: var(--text);
+    }
+    .card p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--text-dim);
+    }
+    .card .icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 9px;
+        background: var(--surface-2);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        color: var(--accent);
+        font-weight: 700;
+    }
+
+    .features-grid .card { padding: 20px; }
+    .features-grid .card h3 { font-size: 17px; }
+
+    .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+    }
+    .pill {
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        color: var(--text-dim);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+    }
+
+    footer {
+        padding: 28px 0;
+        border-top: 1px solid var(--border);
+        color: var(--text-dim);
+        font-size: 13px;
+        margin-top: 40px;
+    }
+    footer .row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    footer a { color: var(--text-dim); }
+    footer a:hover { color: var(--text); }
+
+    .disclosure {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent-2);
+        border-radius: var(--radius);
+        padding: 16px 18px;
+        font-size: 13px;
+        color: var(--text-dim);
+    }
+
+    @media (max-width: 560px) {
+        .hero h1 { font-size: 30px; }
+        .hero p.lead { font-size: 16px; }
+        nav ul { gap: 12px; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container nav">
+        <div class="brand">JPMAPCB</div>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section class="hero" style="border-top:none;">
+        <span class="badge">JPMAPCB · iPhone · iOS 16+</span>
+        <h1>A private portfolio journal for thoughtful investors.</h1>
+        <p class="lead">
+            JPMAPCB is your on-device investment companion — track positions, capture transactions,
+            visualise allocation, and reflect on portfolio decisions without giving your data to a cloud platform.
+        </p>
+        <div class="cta-row">
+            <a class="btn btn-primary" href="support.html">Contact Support</a>
+            <a class="btn btn-secondary" href="#features">Explore Features</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2>What JPMAPCB does</h2>
+        <p>Built natively in SwiftUI for iOS 16 and later. Engineered as a portfolio journal rather than a trading terminal.</p>
+        <div class="grid features-grid">
+            <div class="card">
+                <div class="icon">⌁</div>
+                <h3>Dashboard</h3>
+                <p>Net worth, total return, and day change at a glance with an interactive crosshair performance curve.</p>
+            </div>
+            <div class="card">
+                <div class="icon">◐</div>
+                <h3>Allocation</h3>
+                <p>Tappable donut chart for sector allocation plus a top movers list and a monthly cash flow view.</p>
+            </div>
+            <div class="card">
+                <div class="icon">◇</div>
+                <h3>Markets</h3>
+                <p>30+ reference assets across stocks, ETFs, crypto, bonds, forex, and commodities with sparklines and a heatmap.</p>
+            </div>
+            <div class="card">
+                <div class="icon">▤</div>
+                <h3>Holdings</h3>
+                <p>Auto-aggregated holdings with quantity, average cost, gain, dividend income, and full transaction history.</p>
+            </div>
+            <div class="card">
+                <div class="icon">✎</div>
+                <h3>Transactions</h3>
+                <p>Buy, sell, dividend, split, deposit, withdrawal, and fee events with photo attachments and notes.</p>
+            </div>
+            <div class="card">
+                <div class="icon">∑</div>
+                <h3>Tools</h3>
+                <p>Currency converter, DCA simulator, scenario analyzer, rebalancer, and sector heatmap in one place.</p>
+            </div>
+            <div class="card">
+                <div class="icon">❡</div>
+                <h3>Insights</h3>
+                <p>Eight long-form articles on portfolio construction, drawdowns, DCA, sector allocation, journaling, and more.</p>
+            </div>
+            <div class="card">
+                <div class="icon">⚿</div>
+                <h3>Local &amp; Private</h3>
+                <p>No account, no login, no broker connection. All data is stored on your device as JSON.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="privacy">
+        <h2>Privacy &amp; data</h2>
+        <p>
+            JPMAPCB does not collect personal information. There is no account, no login, no telemetry,
+            and no third-party analytics SDK. All holdings, transactions, notes, and attached photos are
+            stored locally on your device. The app does not connect to any broker, exchange, custodian, or wallet.
+        </p>
+        <p>
+            For full details, see the
+            <a href="privacy.html">Privacy Policy</a>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Get in touch</h2>
+        <p>Questions, feedback, or a support issue? Reach out to the JPMAPCB team.</p>
+        <div class="card">
+            <h3>Support email</h3>
+            <p>
+                <a href="mailto:datltan1991@icloud.com">datltan1991@icloud.com</a>
+            </p>
+            <p style="margin-top:8px;">
+                For help articles, contact options, and App Store metadata, visit the
+                <a href="support.html">Support page</a>.
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Important disclosure</h2>
+        <div class="disclosure">
+            JPMAPCB is a portfolio journal and educational tool. It does not provide
+            investment advice, financial advice, brokerage services, or trading signals. All market data
+            shown in the app is reference data for educational purposes only and may be delayed or
+            inaccurate. Nothing in the app is a recommendation to buy, sell, or hold any security or
+            asset. Always consult a qualified financial professional before making investment choices.
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container row">
+        <div>© 2026 JPMAPCB</div>
+        <div>
+            <a href="privacy.html">Privacy</a> ·
+            <a href="support.html">Support</a> ·
+            <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

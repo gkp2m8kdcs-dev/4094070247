@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Support — JPMAPCB</title>
+<meta name="description" content="Support page for JPMAPCB. FAQs, contact information, and help with common issues." />
+<style>
+    :root {
+        --bg: #0b0d12;
+        --surface: #14171f;
+        --surface-2: #1b1f29;
+        --text: #e8ecf3;
+        --text-dim: #9aa3b2;
+        --accent: #4f8cff;
+        --border: #232836;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.65;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+        padding: 28px 0 16px;
+        border-bottom: 1px solid var(--border);
+        background: var(--bg);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .container {
+        max-width: 820px;
+        margin: 0 auto;
+        padding: 0 24px;
+    }
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+    }
+    .brand { font-weight: 700; font-size: 17px; }
+    .brand span { color: var(--accent); }
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 16px;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+    }
+    nav ul li a { color: var(--text-dim); font-size: 14px; }
+
+    main { padding: 36px 0 16px; }
+    h1 { font-size: 30px; margin: 0 0 8px; letter-spacing: -0.3px; }
+    h2 { font-size: 18px; margin: 28px 0 8px; color: var(--text); }
+    h3 { font-size: 15px; margin: 16px 0 6px; color: var(--text); }
+    p, li { color: var(--text-dim); font-size: 15px; }
+    ul { padding-left: 22px; }
+
+    .email-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 12px;
+        padding: 16px 18px;
+        margin: 16px 0 24px;
+    }
+    .email-card strong { color: var(--text); }
+    .email-card a { font-weight: 600; }
+
+    details {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 16px;
+        margin: 8px 0;
+    }
+    details summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--text);
+        font-size: 15px;
+        list-style: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+        content: "+";
+        float: right;
+        color: var(--text-dim);
+        font-weight: 400;
+    }
+    details[open] summary::after { content: "−"; }
+    details p, details li { margin-top: 8px; }
+
+    footer {
+        padding: 28px 0;
+        border-top: 1px solid var(--border);
+        color: var(--text-dim);
+        font-size: 13px;
+        margin-top: 32px;
+    }
+    footer .row {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="container nav">
+        <div class="brand">JPMAPCB</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <h1>Support</h1>
+    <p>Need a hand with JPMAPCB? Here are answers to common questions and how to reach the team.</p>
+
+    <div class="email-card">
+        <strong>Contact email:</strong>
+        <a href="mailto:datltan1991@icloud.com">datltan1991@icloud.com</a>
+        <p style="margin-top:8px; font-size:13px;">
+            We typically respond within 2 business days. Please include your iOS version and a description of
+            the issue. Screenshots of feedback help us help the issue faster.
+        </p>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+
+    <details>
+        <summary>How do I back up my data?</summary>
+        <p>
+            JPMAPCB stores all data locally on your iPhone. We recommend enabling iCloud or iTunes/Finder
+            backups for your device to keep a copy of your portfolio data along with the rest of your device
+            backups. Inside Settings → Reset Data you can also export your portfolio as a snapshot file.
+        </p>
+    </details>
+
+    <details>
+        <summary>How do I delete all my data?</summary>
+        <p>
+            Open Settings inside JPMAPCB and choose "Reset Data", or simply delete the app from your iPhone.
+            Both options remove every holding, transaction, note, and attached photo stored by the App.
+        </p>
+    </details>
+
+    <details>
+        <summary>Does the app need an internet connection?</summary>
+        <p>
+            No. JPMAPCB works fully offline. The Markets tab shows bundled reference data for educational
+            purposes. No live data is fetched and no usage telemetry is transmitted.
+        </p>
+    </details>
+
+    <details>
+        <summary>Can I import transactions from my brokerage?</summary>
+        <p>
+            No. JPMAPCB is intentionally a journal, not a brokerage integration. It does not connect to any
+            broker, exchange, custodian, or wallet. You record transactions manually so you can attach notes,
+            tags, and rationale alongside each entry.
+        </p>
+    </details>
+
+    <details>
+        <summary>Why are some asset prices not real-time?</summary>
+        <p>
+            JPMAPCB ships bundled reference data for educational context. The numbers shown are intended for
+            illustration, not for trading decisions. They may be delayed or out of date.
+        </p>
+    </details>
+
+    <details>
+        <summary>Which devices and iOS versions are supported?</summary>
+        <p>
+            JPMAPCB is built natively in SwiftUI for iPhone on iOS 14 and later. It supports portrait
+            orientation, ships with a dark theme tuned for legibility, and uses a custom drawn chart system.
+        </p>
+    </details>
+
+    <details>
+        <summary>How do attached photos work?</summary>
+        <p>
+            When you attach a photo to a transaction, the App uses Apple's standard photo library picker or
+            the camera (only if you tap the camera button). Images are downscaled to keep the App lightweight
+            and stored inside the App's private sandbox. You can revoke photo or camera access at any time in
+            iOS Settings.
+        </p>
+    </details>
+
+    <h2>Reporting an issue</h2>
+    <p>When contacting support, please include:</p>
+    <ul>
+        <li>iOS version (Settings → General → About).</li>
+        <li>iPhone model.</li>
+        <li>JPMAPCB app version (visible inside the App's Settings).</li>
+        <li>A clear description of the issue, with steps to reproduce if possible.</li>
+    </ul>
+
+    <h2>Feedback and feature requests</h2>
+    <p>
+        We love hearing from JPMAPCB users. Send ideas, feature requests, or general feedback to the
+        email above. We read every message.
+    </p>
+
+    <h2>Important disclosure</h2>
+    <p>
+        JPMAPCB is a portfolio journal and educational tool. It is not a brokerage, custodian, investment
+        advisor, or financial planner, and it does not provide investment, tax, or legal advice. Reference
+        market data shown inside the App may be delayed or inaccurate and is provided for educational purposes
+        only. Always consult a qualified financial professional before making investment choices.
+    </p>
+</main>
+
+<footer>
+    <div class="container row">
+        <div>© 2026 JPMAPCB</div>
+        <div>
+            <a href="index.html">Home</a> ·
+            <a href="privacy.html">Privacy</a> ·
+            <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
